@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите выражение: ");
+        String input = scanner.nextLine();
+        String result = calc(input);
+        System.out.println("Результат: " + result);
+    }
+
+    public static String calc(String input) {
+        String[] parts = input.split(" ");
+        if (parts.length != 3) {
+            throw new IllegalArgumentException("Неправильное количество аргументов");
+        }
+        int a = Integer.parseInt(parts[0]);
+        int b = Integer.parseInt(parts[2]);
+        String operator = parts[1];
+        int result;
+        switch (operator) {
+            case "+":
+                result = a + b;
+                break;
+            case "-":
+                result = a - b;
+                break;
+            case "*":
+                result = a * b;
+                break;
+            case "/":
+                result = a / b;
+                break;
+            default:
+                throw new IllegalArgumentException("Неправильный оператор");
+        }
+        return Integer.toString(result);
+    }
+}
